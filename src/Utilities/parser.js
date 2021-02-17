@@ -1,5 +1,7 @@
 import a from '../storage/airport.json'
 
+console.log(a)
+
 const parser = () => {
     const getRunways = () => {
         return Object.keys(a.RWY).map(r => {
@@ -30,7 +32,7 @@ const parser = () => {
 
             }
         })
-        console.log(opposite)
+        //console.log(opposite)
     }
     getStrips()
 
