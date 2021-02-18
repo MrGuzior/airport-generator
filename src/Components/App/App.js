@@ -4,7 +4,7 @@ import parser from '../../Utilities/parser'
 
 const App = () => {
   //console.log(parser())
-  //parser()
+  parser()
   return (
     <Runway />
   );

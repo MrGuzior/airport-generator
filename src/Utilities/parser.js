@@ -3,6 +3,9 @@ import a from '../storage/airport.json'
 
 
 const parser = () => {
+
+    console.log(a)
+
     const getRunways = () => {
         const runways = Object.keys(a.RWY).map(r => {
             const R = a.RWY[r]
@@ -30,16 +33,40 @@ const parser = () => {
         const highestLat = getRunways().sort((a, b) => {
             return b.latitude - a.latitude
         })
+
+        const high = highestLat[0].latitude
+        const low = highestLat[highestLat.length - 1].latitude
+
+        console.log(highestLat)
+
+        const pixelPerDegree = 1000 / (high - low)
+
+        //console.log(pixelPerDegree)
+
         const latArr = highestLat.map(l => l.latitude)
+        const relLat = latArr.map(l => (latArr[0] - l))
+
+        const pixelArray = relLat.map(r => r * pixelPerDegree)
+
+        //console.log(pixelArray)
 
 
 
-        const relLat = latArr.map(l => (latArr[0] - l) / 1000)
 
 
-        console.log(relLat)
-        return relLat
+
+
+
+
+
+        //console.log(relLat)
     }
+
+    getRelativeLatitude()
+
+
+
+
 
     const getRelativeLongitude = () => {
 
@@ -51,20 +78,18 @@ const parser = () => {
         const relLon = lonArr.map(l => (lonArr[0] - l) / 50)
 
 
-        console.log(relLon)
+        //console.log(relLon)
         return relLon
     }
 
-    getRelativeLongitude()
+    //getRelativeLongitude()
 
 
     return {
         name: a.NAME,
         latitude: a.LATITUDE,
         longitude: a.LONGITUDE,
-        runways: getRunways(),
-        relLat: getRelativeLatitude(),
-        relLon: getRelativeLongitude()
+        runways: getRunways()
     }
 }
 
