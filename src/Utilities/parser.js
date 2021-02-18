@@ -37,18 +37,18 @@ const parser = () => {
         const high = highestLat[0].latitude
         const low = highestLat[highestLat.length - 1].latitude
 
-        console.log(highestLat)
+        //console.log(highestLat)
 
         const pixelPerDegree = 1000 / (high - low)
 
-        //console.log(pixelPerDegree)
+
 
         const latArr = highestLat.map(l => l.latitude)
         const relLat = latArr.map(l => (latArr[0] - l))
 
         const pixelArray = relLat.map(r => r * pixelPerDegree)
 
-        //console.log(pixelArray)
+
 
 
 
